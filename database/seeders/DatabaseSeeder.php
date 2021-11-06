@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Course;
 use App\Models\CourseStudent;
 use App\Models\Guardian;
+use App\Models\GuardianStudent;
 use App\Models\Student;
 use Illuminate\Database\Seeder;
 
@@ -45,6 +46,23 @@ class DatabaseSeeder extends Seeder
         CourseStudent::create([
             'student_id' => 2,
             'course_id' => 3,
+        ]);
+
+        GuardianStudent::create([
+            'student_id' => 1,
+            'parent_id' => 1,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 1,
+            'parent_id' => 2,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 2,
+            'parent_id' => 2,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 2,
+            'parent_id' => 3,
         ]);
     }
 }
