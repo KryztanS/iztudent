@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CourseStudent;
+use App\Models\Guardian;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,9 @@ class StudentController extends Controller
 
     public function create()
     {
-        return view('students.create');
+        return view('students.create', [
+            'parents' => Guardian::all()
+        ]);
     }
 
     public function store()
