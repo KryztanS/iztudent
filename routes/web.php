@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseStudentController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [StudentController::class, 'index'])->name('home');
 
-Route::get('students', function () {
-    return view('students.index');
-});
+Route::get('students', [StudentController::class, 'index']);
+Route::get('students/create', [StudentController::class, 'create'])->name('students.create');
+Route::post('students', [StudentController::class, 'store'])->name('students.store');
+
+Route::post('course_student', [CourseStudentController::class, 'store'])->name('course_student.store');
