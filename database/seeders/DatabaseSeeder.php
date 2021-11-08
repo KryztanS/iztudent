@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Advance++ Math',
         ]);
 
-        Student::factory(3)->create();
-        Guardian::factory(3)->create();
+        Student::factory(9)->create();
+        Guardian::factory(9)->create();
 
         CourseStudent::create([
             'student_id' => 1,
@@ -62,6 +62,107 @@ class DatabaseSeeder extends Seeder
         ]);
         GuardianStudent::create([
             'student_id' => 2,
+            'parent_id' => 3,
+        ]);
+
+        // More
+
+        CourseStudent::create([
+            'student_id' => 3,
+            'course_id' => 1,
+        ]);
+        CourseStudent::create([
+            'student_id' => 3,
+            'course_id' => 2,
+        ]);
+        CourseStudent::create([
+            'student_id' => 4,
+            'course_id' => 2,
+        ]);
+        CourseStudent::create([
+            'student_id' => 4,
+            'course_id' => 3,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 3,
+            'parent_id' => 1,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 3,
+            'parent_id' => 2,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 4,
+            'parent_id' => 2,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 4,
+            'parent_id' => 3,
+        ]);
+
+        CourseStudent::create([
+            'student_id' => 5,
+            'course_id' => 1,
+        ]);
+        CourseStudent::create([
+            'student_id' => 5,
+            'course_id' => 2,
+        ]);
+        CourseStudent::create([
+            'student_id' => 6,
+            'course_id' => 2,
+        ]);
+        CourseStudent::create([
+            'student_id' => 6,
+            'course_id' => 3,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 5,
+            'parent_id' => 1,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 5,
+            'parent_id' => 2,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 6,
+            'parent_id' => 2,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 6,
+            'parent_id' => 3,
+        ]);
+
+        CourseStudent::create([
+            'student_id' => 7,
+            'course_id' => 1,
+        ]);
+        CourseStudent::create([
+            'student_id' => 7,
+            'course_id' => 2,
+        ]);
+        CourseStudent::create([
+            'student_id' => 8,
+            'course_id' => 2,
+        ]);
+        CourseStudent::create([
+            'student_id' => 8,
+            'course_id' => 3,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 7,
+            'parent_id' => 1,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 7,
+            'parent_id' => 2,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 8,
+            'parent_id' => 2,
+        ]);
+        GuardianStudent::create([
+            'student_id' => 8,
             'parent_id' => 3,
         ]);
     }

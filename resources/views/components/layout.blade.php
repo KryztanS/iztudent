@@ -49,7 +49,9 @@
     </div>
     <!-- Header End -->
 
-    {{ $slot }}
+    <div class="max-w-6xl mt-16 mx-auto">
+        {{ $slot }}
+    </div>
 
 </body>
 

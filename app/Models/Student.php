@@ -9,6 +9,8 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $with = ['parents', 'courses'];
+
     public function courses()
     {
         return $this->belongsToMany(Course::class);
