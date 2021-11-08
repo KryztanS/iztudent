@@ -24,7 +24,7 @@
                 <div class="flex justify-start lg:w-0 lg:flex-1">
                     <a href="#">
                         <span class="sr-only">Izumi</span>
-                        <img class="h-8 w-auto sm:h-10" src="{{ asset('images/iztudent_logo.jpg') }}" alt="">
+                        <img class="h-8 w-auto sm:h-10" src="{{ asset('images/iztudent_logo2.jpg') }}" alt="">
                     </a>
                 </div>
                 <nav class="hidden md:flex space-x-10">
@@ -40,7 +40,7 @@
                         Sign in
                     </a>
                     <a href="#"
-                        class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-500 hover:bg-red-700">
+                        class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-500 hover:bg-blue-700">
                         Sign up
                     </a>
                 </div>
