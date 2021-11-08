@@ -10,4 +10,6 @@ class GuardianStudent extends Model
     use HasFactory;
 
     protected $table = 'parent_student';
+
+    protected $fillable = ['student_id', 'parent_id'];
 }

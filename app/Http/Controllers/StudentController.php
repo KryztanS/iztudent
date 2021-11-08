@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CourseStudent;
 use App\Models\Guardian;
+use App\Models\GuardianStudent;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -30,12 +31,22 @@ class StudentController extends Controller
             'contact_number' => 'required|numeric',
             'email' => 'required|email|unique:students,email',
             'address' => 'required',
+            'parent_ids' => 'json',
             'basic-math' => 'nullable|numeric',
             'adv-math' => 'nullable|numeric',
             'adv-pp-math' => 'nullable|numeric',
         ]);
 
         $student = Student::create($attributes);
+
+        $parents = json_decode($attributes['parent_ids'], true);
+
+        foreach ($parents as $parent) {
+            GuardianStudent::create([
+                'student_id' => $student['id'],
+                'parent_id' => $parent,
+            ]);
+        }
 
         if (isset($attributes['basic-math'])) {
             CourseStudent::create([
