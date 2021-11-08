@@ -17,7 +17,8 @@
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                                     <input type="text" name="name" id="name" autocomplete="name"
-                                        class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                        required>
                                 </div>
                                 @error("name")
                                 <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
@@ -27,7 +28,8 @@
                                     <label for="contact_number" class="block text-sm font-medium text-gray-700">Contact
                                         Number</label>
                                     <input type="text" name="contact_number" id="contact_number"
-                                        class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                        required>
                                 </div>
                                 @error("contact_number")
                                 <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
@@ -36,7 +38,8 @@
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                                     <input type="text" name="email" id="email" autocomplete="email"
-                                        class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                        required>
                                 </div>
                                 @error("email")
                                 <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
@@ -45,7 +48,8 @@
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
                                     <input type="text" name="address" id="address" autocomplete="address"
-                                        class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                        required>
                                 </div>
                                 @error("address")
                                 <p class="text-red-500 text-sm mt-2">{{ $message }}</p>

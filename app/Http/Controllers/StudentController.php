@@ -69,4 +69,11 @@ class StudentController extends Controller
 
         return back()->with('success', 'Student created!');
     }
+
+    public function destroy(Student $student)
+    {
+        $student->delete();
+
+        return back()->with('success', 'Student deleted!');
+    }
 }

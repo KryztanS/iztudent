@@ -37,11 +37,17 @@
                 @endforeach
             </div>
             <div class="column flex flex-col w-2/12">
-                <div class="action text-sm font-medium text-blue-600 hover:text-blue-900">
+                <div class="action text-sm font-medium text-blue-600 hover:text-blue-700">
                     Edit
                 </div>
-                <div class="action text-sm font-medium text-red-600 hover:text-red-900">
-                    Delete
+                <div class="action">
+                    <form action="/students/{{ $student->id }}" method="POST" class="student-del-form">
+                        @csrf
+                        @method('DELETE')
+
+                        <button
+                            class="student-del-btn text-sm font-medium text-red-600 hover:text-red-700">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -53,3 +59,17 @@
     </div>
 
 </x-layout>
+
+<script>
+    $(document).ready(function() {
+        $(".student-del-btn").click(function (event) {
+            event.preventDefault();
+
+            let choice = confirm("Are you sure you want to delete this student?");
+
+            if (choice) {
+                $(this).closest(".student-del-form").submit();
+            }
+        });
+    });
+</script>
