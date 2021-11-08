@@ -37,11 +37,11 @@
                 @endforeach
             </div>
             <div class="column flex flex-col w-2/12">
-                <div class="action text-sm font-medium text-blue-600 hover:text-blue-700">
-                    Edit
-                </div>
+                <a href="{{ route('students.edit', ['student' => $student->id]) }}"
+                    class="action text-sm font-medium text-blue-600 hover:text-blue-700">Edit</a>
                 <div class="action">
-                    <form action="/students/{{ $student->id }}" method="POST" class="student-del-form">
+                    <form action="{{ route('students.destroy', ['student' => $student->id]) }}" method="POST"
+                        class="student-del-form">
                         @csrf
                         @method('DELETE')
 

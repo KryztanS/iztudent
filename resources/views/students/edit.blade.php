@@ -4,12 +4,13 @@
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
                 <div class="px-4 sm:px-0">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Create New Student</h3>
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Edit Student</h3>
                 </div>
             </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form action="{{ route('students.store') }}" method="POST">
+                <form action="{{ route('students.update', ['student' => $student->id]) }}" method="POST">
                     @csrf
+                    @method('PATCH')
 
                     <div class="shadow overflow-hidden sm:rounded-md mb-3">
                         <div class="px-4 py-5 bg-white sm:p-6">
@@ -18,7 +19,7 @@
                                     <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                                     <input type="text" name="name" id="name" autocomplete="name"
                                         class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                        required>
+                                        value="{{ $student->name }}" required>
                                 </div>
                                 @error("name")
                                 <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
@@ -29,7 +30,7 @@
                                         Number</label>
                                     <input type="text" name="contact_number" id="contact_number"
                                         class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                        required>
+                                        value="{{ $student->contact_number }}" required>
                                 </div>
                                 @error("contact_number")
                                 <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
@@ -39,7 +40,7 @@
                                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                                     <input type="text" name="email" id="email" autocomplete="email"
                                         class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                        required>
+                                        value="{{ $student->email }}" required>
                                 </div>
                                 @error("email")
                                 <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
@@ -49,7 +50,7 @@
                                     <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
                                     <input type="text" name="address" id="address" autocomplete="address"
                                         class="p-3 border mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                        required>
+                                        value="{{ $student->address }}" required>
                                 </div>
                                 @error("address")
                                 <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
@@ -84,6 +85,15 @@
                             @enderror
 
                             <div class="parents-container">
+                                @foreach ($student->parents as $student_parent)
+                                <div class="parent w-1/2 flex justify-between items-center border border-gray-300 p-2 rounded-md mb-2"
+                                    data-parent="{{ $student_parent->id }}">
+                                    <div class="parent-name text-sm font-medium">{{ $student_parent->name }}</div>
+                                    <button type="button" class="parent-remove inline-flex justify-center py-0.5 px-2 border border-transparent shadow-sm text-sm font-medium 
+                                        rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
+                                        focus:ring-red-500 ml-5">x</button>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -93,10 +103,19 @@
                             <fieldset>
                                 <legend class="text-base font-medium text-gray-900">Courses Enrolled</legend>
                                 <div class="mt-4 space-y-4">
+                                    @php
+                                    $courses = [];
+
+                                    foreach($student->courses as $student_course){
+                                    $courses[] = $student_course['id'];
+                                    }
+                                    @endphp
+
                                     <div class="flex items-start">
                                         <div class="flex items-center h-5">
                                             <input id="basic-math" name="basic-math" type="checkbox" value="1"
-                                                class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                                                class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
+                                                {{ (in_array("1", $courses) ? ' checked' : '' ) }}>
                                         </div>
                                         <div class="ml-3 text-sm">
                                             <label for="basic-math" class="font-medium text-gray-700">Basic Math</label>
@@ -109,7 +128,8 @@
                                     <div class="flex items-start">
                                         <div class="flex items-center h-5">
                                             <input id="adv-math" name="adv-math" type="checkbox" value="2"
-                                                class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                                                class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
+                                                {{ (in_array("2", $courses) ? ' checked' : '' ) }}>
                                         </div>
                                         <div class="ml-3 text-sm">
                                             <label for="adv-math" class="font-medium text-gray-700">Advance Math</label>
@@ -122,7 +142,8 @@
                                     <div class="flex items-start">
                                         <div class="flex items-center h-5">
                                             <input id="adv-pp-math" name="adv-pp-math" type="checkbox" value="3"
-                                                class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                                                class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
+                                                {{ (in_array("3", $courses) ? ' checked' : '' ) }}>
                                         </div>
                                         <div class="ml-3 text-sm">
                                             <label for="adv-pp-math" class="font-medium text-gray-700">Advance++
@@ -179,15 +200,20 @@
         $('body').on('click', '.parent-remove', function() {
             $(this).closest('.parent').remove();
 
-            let parentsArray = [];
-            $('.parent').each(function(index) {
-                let parentId = $(this).data('parent');
-
-                parentsArray.push(parentId);
-            });
-
-            $('.parent-ids').val(JSON.stringify(parentsArray));
+            resetParentsArray();
         });
 
+        resetParentsArray();
     });
+
+    function resetParentsArray() {
+        let parentsArray = [];
+        $('.parent').each(function(index) {
+            let parentId = $(this).data('parent');
+
+            parentsArray.push(parentId);
+        });
+
+        $('.parent-ids').val(JSON.stringify(parentsArray));
+    }
 </script>

@@ -28,7 +28,7 @@
                     </a>
                 </div>
                 <nav class="hidden md:flex space-x-10">
-                    <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                    <a href="{{ route('home') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">
                         Students
                     </a>
                     <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
