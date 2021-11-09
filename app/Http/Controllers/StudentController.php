@@ -81,8 +81,6 @@ class StudentController extends Controller
 
     public function update(Student $student)
     {
-        // dd(request());
-
         $attributes = request()->validate([
             'name' => 'required|regex:/^[\pL\s]+$/u',
             'contact_number' => 'required|numeric',

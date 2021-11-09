@@ -31,7 +31,8 @@
                     <a href="{{ route('home') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">
                         Students
                     </a>
-                    <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                    <a href="{{ route('parents.index') }}"
+                        class="text-base font-medium text-gray-500 hover:text-gray-900">
                         Parents
                     </a>
                 </nav>
