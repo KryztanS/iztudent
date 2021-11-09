@@ -21,7 +21,7 @@ class StudentController extends Controller
     public function create()
     {
         return view('students.create', [
-            'parents' => Guardian::all()
+            'parents' => Guardian::orderBy('name')->get()
         ]);
     }
 
@@ -75,7 +75,7 @@ class StudentController extends Controller
     {
         return view('students.edit', [
             'student' => $student,
-            'parents' => Guardian::all()
+            'parents' => Guardian::orderBy('name')->get()
         ]);
     }
 
