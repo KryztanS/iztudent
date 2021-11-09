@@ -28,7 +28,7 @@ class StudentController extends Controller
     public function store()
     {
         $attributes = request()->validate([
-            'name' => 'required|regex:/^[\pL\s]+$/u',
+            'name' => 'required|regex:/^[\pL\s\.\-]+$/u',
             'contact_number' => 'required|numeric',
             'email' => 'required|email|unique:students,email',
             'address' => 'required',
@@ -68,7 +68,7 @@ class StudentController extends Controller
             ]);
         }
 
-        return back()->with('success', 'Student created!');
+        return redirect()->route('home')->with('success', 'Student created!');
     }
 
     public function edit(Student $student)
@@ -82,7 +82,7 @@ class StudentController extends Controller
     public function update(Student $student)
     {
         $attributes = request()->validate([
-            'name' => 'required|regex:/^[\pL\s]+$/u',
+            'name' => 'required|regex:/^[\pL\s\.\-]+$/u',
             'contact_number' => 'required|numeric',
             'email' => ['required', 'email', Rule::unique('students', 'email')->ignore($student->id)],
             'address' => 'required',

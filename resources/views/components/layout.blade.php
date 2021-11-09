@@ -54,6 +54,17 @@
         {{ $slot }}
     </div>
 
+    @if (session()->has('success'))
+    <x-flash>{{ session('success') }}</x-flash>
+    @endif
+
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $(".flash-message").hide();
+            }, 3000);
+        });
+    </script>
 </body>
 
 </html>
