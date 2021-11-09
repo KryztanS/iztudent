@@ -18,7 +18,7 @@
     @if ($students->count())
     <div class="table-header bg-gray-300 flex font-medium mb-1 mt-10 px-4 py-2 rounded-md text-md">
         <div class="w-4/12">
-            Student Information
+            Students Information
         </div>
         <div class="w-3/12">
             Parents
