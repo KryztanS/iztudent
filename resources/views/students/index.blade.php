@@ -16,9 +16,24 @@
     </div>
 
     @if ($students->count())
-    <div class="table flex flex-col w-full mt-10">
+    <div class="table-header bg-gray-300 flex font-medium mb-1 mt-10 px-4 py-2 rounded-md text-md">
+        <div class="w-4/12">
+            Students Information
+        </div>
+        <div class="w-3/12">
+            Parents
+        </div>
+        <div class="w-3/12">
+            Courses
+        </div>
+        <div class="w-2/12">
+
+        </div>
+    </div>
+    <div class="table flex flex-col w-full">
         @foreach ($students as $student)
-        <div class="student flex border border-gray-300 rounded-md p-5 mb-1">
+        <div
+            class="student flex border border-gray-300 rounded-md p-5 mb-1{{ ($loop->index % 2 == 0 ? '' : ' bg-gray-100') }}">
             <div class="column flex flex-col w-4/12 pr-0.5">
                 <div class="info text-md text-gray-900 font-medium">
                     {{ $student->name }}

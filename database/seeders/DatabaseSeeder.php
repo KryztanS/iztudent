@@ -7,6 +7,7 @@ use App\Models\CourseStudent;
 use App\Models\Guardian;
 use App\Models\GuardianStudent;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::factory()->create([
+            'name' => 'Iztudent Admin',
+            'email' => 'iztudent.admin@gmail.com',
+            'password' => 'q0w9e8r7'
+        ]);
+
         Course::create([
             'name' => 'Basic Math',
         ]);

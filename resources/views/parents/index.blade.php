@@ -5,7 +5,16 @@
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add New Parent</a>
     </div>
 
-    <div class="table flex flex-col w-full mt-10">
+    @if ($parents->count())
+    <div class="table-header bg-gray-300 flex font-medium mb-1 mt-10 px-4 py-2 rounded-md text-md">
+        <div class="w-8/12">
+            Parents Information
+        </div>
+        <div class="w-4/12">
+
+        </div>
+    </div>
+    <div class="table flex flex-col w-full">
         @foreach ($parents as $parent)
         <div class="parent flex border border-gray-300 rounded-md p-5 mb-1">
             <div class="column flex flex-col w-8/12 pr-0.5">
@@ -36,6 +45,9 @@
         </div>
         @endforeach
     </div>
+    @else
+    <p class="text-center mt-36">No parents found.</p>
+    @endif
 
     <div class="mt-10">
         {{ $parents->links() }}

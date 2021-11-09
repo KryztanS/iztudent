@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <!-- Header -->
+    @auth
     <div class="relative bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div
@@ -36,19 +36,42 @@
                         Parents
                     </a>
                 </nav>
+                @auth
                 <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                    <a href="#" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
-                        Sign in
-                    </a>
-                    <a href="#"
+                    <div class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                        {{ auth()->user()->name }}
+                    </div>
+                    <a href="javascript:{}" onclick="document.getElementById('logout-form').submit();"
                         class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-500 hover:bg-blue-700">
-                        Sign up
+                        Sign Out
                     </a>
                 </div>
+                <form action="{{ route('logout') }}" method="POST" id="logout-form" class="hidden">
+                    @csrf
+                </form>
+                @else
+                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                    <div class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+
+                    </div>
+                </div>
+                @endauth
+
+                {{--
+                <a href="#" class="ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                    {{ auth()->user()->name }}
+                </a>
+                <a href="javascript:{}" onclick="document.getElementById('logout-form').submit();"
+                    class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900">
+                    Sign out
+                </a>
+                <form action="/logout" method="POST" id="logout-form" class="hidden">
+                    @csrf
+                </form> --}}
             </div>
         </div>
     </div>
-    <!-- Header End -->
+    @endauth
 
     <div class="max-w-6xl my-16 mx-auto">
         {{ $slot }}
