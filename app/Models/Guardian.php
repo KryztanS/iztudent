@@ -11,6 +11,8 @@ class Guardian extends Model
 
     protected $table = 'parents';
 
+    protected $fillable = ['name', 'contact_number', 'email'];
+
     public function students()
     {
         return $this->belongsToMany(Student::class, 'parent_student', 'parent_id', 'student_id');
