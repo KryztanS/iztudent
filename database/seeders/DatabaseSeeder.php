@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Advance++ Math',
         ]);
 
-        Student::factory(9)->create();
-        Guardian::factory(9)->create();
+        Student::factory(8)->create();
+        Guardian::factory(8)->create();
 
         CourseStudent::create([
             'student_id' => 1,
