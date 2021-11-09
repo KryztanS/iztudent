@@ -14,21 +14,22 @@ class StudentController extends Controller
     public function index()
     {
         return view('students.index', [
-            'students' => Student::orderBy('name', 'asc')->paginate(5)
+            // 'students' => Student::orderBy('name', 'asc')->paginate(5),
+            'students' => Student::filter(request('search'))->orderBy('name', 'asc')->paginate(5),
         ]);
     }
 
     public function create()
     {
         return view('students.create', [
-            'parents' => Guardian::all()
+            'parents' => Guardian::orderBy('name')->get()
         ]);
     }
 
     public function store()
     {
         $attributes = request()->validate([
-            'name' => 'required|regex:/^[\pL\s]+$/u',
+            'name' => 'required|regex:/^[\pL\s\.\-]+$/u',
             'contact_number' => 'required|numeric',
             'email' => 'required|email|unique:students,email',
             'address' => 'required',
@@ -68,21 +69,21 @@ class StudentController extends Controller
             ]);
         }
 
-        return back()->with('success', 'Student created!');
+        return redirect()->route('home')->with('success', 'Student created!');
     }
 
     public function edit(Student $student)
     {
         return view('students.edit', [
             'student' => $student,
-            'parents' => Guardian::all()
+            'parents' => Guardian::orderBy('name')->get()
         ]);
     }
 
     public function update(Student $student)
     {
         $attributes = request()->validate([
-            'name' => 'required|regex:/^[\pL\s]+$/u',
+            'name' => 'required|regex:/^[\pL\s\.\-]+$/u',
             'contact_number' => 'required|numeric',
             'email' => ['required', 'email', Rule::unique('students', 'email')->ignore($student->id)],
             'address' => 'required',

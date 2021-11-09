@@ -1,10 +1,21 @@
 <x-layout>
 
-    <div class="text-right">
+    <div class="flex items-center justify-between">
+        <div class="flex border-2 border-gray-200 rounded">
+            <form method="GET" action="#">
+                <input type="text" name="search" class="px-4 py-2 w-80" placeholder="Search"
+                    value="{{ request('search') }}">
+                <button type="submit"
+                    class="bg-blue-500 border border-transparent focus:outline-none font-medium h-full hover:bg-blue-700 px-4 py-2 rounded-sm shadow-sm text-white">
+                    Search</button>
+            </form>
+        </div>
+
         <a href="{{ route('students.create') }}"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add New Student</a>
     </div>
 
+    @if ($students->count())
     <div class="table flex flex-col w-full mt-10">
         @foreach ($students as $student)
         <div class="student flex border border-gray-300 rounded-md p-5 mb-1">
@@ -53,8 +64,11 @@
         </div>
         @endforeach
     </div>
+    @else
+    <p class="text-center mt-36">No students found.</p>
+    @endif
 
-    <div class="my-10">
+    <div class="mt-10">
         {{ $students->links() }}
     </div>
 

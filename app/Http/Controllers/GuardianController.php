@@ -25,14 +25,14 @@ class GuardianController extends Controller
     public function store()
     {
         $attributes = request()->validate([
-            'name' => 'required|regex:/^[\pL\s]+$/u',
+            'name' => 'required|regex:/^[\pL\s\.\-]+$/u',
             'contact_number' => 'required|numeric',
             'email' => 'required|email|unique:parents,email',
         ]);
 
         $parent = Guardian::create($attributes);
 
-        return back()->with('success', 'Parent created!');
+        return redirect()->route('parents.index')->with('success', 'Parent created!');
     }
 
     public function edit(Guardian $parent)
@@ -45,7 +45,7 @@ class GuardianController extends Controller
     public function update(Guardian $parent)
     {
         $attributes = request()->validate([
-            'name' => 'required|regex:/^[\pL\s]+$/u',
+            'name' => 'required|regex:/^[\pL\s\.\-]+$/u',
             'contact_number' => 'required|numeric',
             'email' => ['required', 'email', Rule::unique('parents', 'email')->ignore($parent->id)],
         ]);
