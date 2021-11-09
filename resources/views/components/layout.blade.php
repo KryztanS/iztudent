@@ -50,7 +50,7 @@
     </div>
     <!-- Header End -->
 
-    <div class="max-w-6xl mt-16 mx-auto">
+    <div class="max-w-6xl my-16 mx-auto">
         {{ $slot }}
     </div>
 

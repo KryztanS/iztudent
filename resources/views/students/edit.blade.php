@@ -1,6 +1,8 @@
 <x-layout>
 
     <div class="my-10 sm:mt-0">
+        <x-back-button link="{{ route('home') }}">Back to Students</x-back-button>
+
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
                 <div class="px-4 sm:px-0">

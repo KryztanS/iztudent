@@ -54,7 +54,7 @@
         @endforeach
     </div>
 
-    <div class="my-10">
+    <div class="mt-10">
         {{ $students->links() }}
     </div>
 
